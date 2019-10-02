@@ -16,10 +16,11 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class MainApp extends Application {
-
+public static Stage stage;
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/escenaContactos.fxml"));
+        this.stage=stage;
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         List<Contacto> l;
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");

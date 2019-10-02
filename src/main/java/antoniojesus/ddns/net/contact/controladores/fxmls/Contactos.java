@@ -40,7 +40,7 @@ public class Contactos implements Initializable {
     private TableColumn<Contacto, String> tbcolNombre, tbcolTelefono;
 
     @FXML
-    private TextField tfBuscar, tfNombre, tfPrefijo, tfTelefono, tfEmail;
+    private TextField tfBNombre, tfNombre, tfPrefijo, tfTelefono, tfEmail;
 
     @FXML
     private ToggleGroup fijo;
@@ -59,20 +59,12 @@ public class Contactos implements Initializable {
     private Button btnCrear, btnActualizar, btnBorrar;
     @FXML
     private TableView<Contacto> tabla;
-    @FXML
-    private SplitPane panelDividido;
+ 
 
    public static ObservableList<Contacto> lista = null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        panelDividido.getDividers().get(0).positionProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                panelDividido.getDividers().get(00).setPosition(0.5500);
-            }
-        });
-
         etiError.setVisible(
                 false);
         imgvFax.setVisible(
@@ -200,7 +192,7 @@ public class Contactos implements Initializable {
         }
         );
 
-        tfBuscar.textProperty()
+        tfBNombre.textProperty()
                 .addListener(new ChangeListener<String>() {
                     @Override
                     public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -329,9 +321,9 @@ public class Contactos implements Initializable {
                         Consultas.actualizarContacto(contacto);
                         lista = Consultas.getContactos();
                         tabla.getItems().setAll(lista);
-                        String s = tfBuscar.getText();
-                        tfBuscar.setText("");
-                        tfBuscar.setText(s);
+                        String s = tfBNombre.getText();
+                        tfBNombre.setText("");
+                        tfBNombre.setText(s);
                     }
 
                 } else {
@@ -397,9 +389,9 @@ public class Contactos implements Initializable {
 
                     lista.setAll(Consultas.getContactos());
                     tabla.getItems().setAll(lista);
-                    String s = tfBuscar.getText();
-                    tfBuscar.setText("");
-                    tfBuscar.setText(s);
+                    String s = tfBNombre.getText();
+                    tfBNombre.setText("");
+                    tfBNombre.setText(s);
                 } else {
                     Alert a = new Alert(Alert.AlertType.ERROR, "Este contacto ya existe,por lo tanto, no se puede crear nuevo.", ButtonType.CLOSE);
                     a.show();
@@ -434,9 +426,9 @@ public class Contactos implements Initializable {
                         Consultas.eliminarContacto(contacto);
                         lista = Consultas.getContactos();
                         tabla.getItems().setAll(lista);
-                        String s = tfBuscar.getText();
-                        tfBuscar.setText("");
-                        tfBuscar.setText(s);
+                        String s = tfBNombre.getText();
+                        tfBNombre.setText("");
+                        tfBNombre.setText(s);
 
                     }
                 } else {
