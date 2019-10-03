@@ -8,25 +8,21 @@ package antoniojesus.ddns.net.contact.controladores.fxmls;
 import antoniojesus.ddns.net.contact.MainApp;
 import antoniojesus.ddns.net.contact.controladores.Animacion;
 import antoniojesus.ddns.net.contact.controladores.LanzadorVentanas;
+import antoniojesus.ddns.net.contact.controladores.Sistema;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
-import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -34,7 +30,8 @@ import javafx.util.Duration;
  * @author A. Jesús <Antonio Jesús Pérez Delgado ajpd1985@gmail.com>
  */
 public class login implements Initializable {
-  @FXML
+
+    @FXML
     private AnchorPane principal;
 
     @FXML
@@ -51,22 +48,42 @@ public class login implements Initializable {
 
     @FXML
     private Text txtError;
+    @FXML
+    private Hyperlink hyperlinkEmail;
+
     public void initialize(URL url, ResourceBundle rb) {
         Animacion.animaPanel(principal);
-        btnEntrar.setOnAction((ActionEvent event) -> {
-            boolean valido=false;
-            
-            
-            
-            
-            valido=true;
-            if(valido==true){
-                new LanzadorVentanas().AbrirFXML("escenaContactos", null, null, true, null, Modality.NONE);
-                MainApp.stage.close();
+        hyperlinkEmail.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Sistema.getHostServices().showDocument("http://mailto:ajpd1985@gmail.com");
             }
         });
-    }   
+        
+        btnEntrar.setOnAction((ActionEvent event) -> {
+            boolean valido = false;
+            String mensajeError = "no se puede conectar:" + "\n";
+            if (pfClave.getText().equals("")) {
+                txtError.setVisible(true);
+                mensajeError += ("Falta que rellenar el campo de la clave, es obligatorio" + "\n");
+            }
+            if (tfUsuario.getText().equals("")) {
+                mensajeError += "Falta que rellenar el campo del usuario, es obligatorio" + "\n";
+            }
 
-    
-    
+            if (!mensajeError.equals("no se puede conectar:" + "\n")) {
+                txtError.setText(mensajeError);
+                txtError.setVisible(true);
+                Animacion.textoParpadeante(txtError);
+            } else {
+                txtError.setVisible(false);
+                valido = true;
+                if (valido == true) {
+                    new LanzadorVentanas().AbrirFXML("escenaContactos", null, null, true, null, Modality.NONE);
+                    MainApp.stage.close();
+                }
+            }
+        });
+    }
+
 }

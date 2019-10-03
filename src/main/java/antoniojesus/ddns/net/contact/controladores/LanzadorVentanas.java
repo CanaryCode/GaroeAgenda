@@ -59,7 +59,7 @@ public class LanzadorVentanas {
                     @Override
                     public void handle(WindowEvent event) {
                         Util.terminar(new ArrayList<Contacto>(Contactos.lista));
-                        Sistema.getVentanas().remove(stage);
+                        Sistema.getVentanas().remove(nombre);
                     }
                 });
             } else {

@@ -1,5 +1,6 @@
 package antoniojesus.ddns.net.contact;
 
+import antoniojesus.ddns.net.contact.controladores.Sistema;
 import antoniojesus.ddns.net.contact.controladores.Util;
 import antoniojesus.ddns.net.contact.modelos.Contacto;
 import antoniojesus.ddns.net.contact.controladores.fxmls.Contactos;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.HostServices;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +19,10 @@ import javafx.stage.WindowEvent;
 
 public class MainApp extends Application {
 public static Stage stage;
+
     @Override
     public void start(Stage stage) throws Exception {
+        Sistema.setHostServices(getHostServices());
         this.stage=stage;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         List<Contacto> l;

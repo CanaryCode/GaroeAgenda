@@ -6,12 +6,16 @@
 package antoniojesus.ddns.net.contact.controladores;
 
 import java.util.Random;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
@@ -24,8 +28,8 @@ public class Animacion {
         Random rand = new Random();
         int sizeOfSqaure = rand.nextInt(50) + 1;
         int speedOfSqaure = rand.nextInt(10) + 5;
-        int startXPoint = rand.nextInt(300);
-        int startYPoint = rand.nextInt(400);
+        int startXPoint = rand.nextInt(350);
+        int startYPoint = rand.nextInt(500);
         int direction = rand.nextInt(5) + 1;
 
         KeyValue moveXAxis = null;
@@ -36,22 +40,22 @@ public class Animacion {
             case 1:
                 // MOVE LEFT TO RIGHT
                 r1 = new Rectangle(0, startYPoint, sizeOfSqaure, sizeOfSqaure);
-                moveXAxis = new KeyValue(r1.xProperty(), 300 - sizeOfSqaure);
+                moveXAxis = new KeyValue(r1.xProperty(), 350 - sizeOfSqaure);
                 break;
             case 2:
                 // MOVE TOP TO BOTTOM
                 r1 = new Rectangle(startXPoint, 0, sizeOfSqaure, sizeOfSqaure);
-                moveYAxis = new KeyValue(r1.yProperty(), 400 - sizeOfSqaure);
+                moveYAxis = new KeyValue(r1.yProperty(), 500 - sizeOfSqaure);
                 break;
             case 3:
                 // MOVE LEFT TO RIGHT, TOP TO BOTTOM
                 r1 = new Rectangle(startXPoint, 0, sizeOfSqaure, sizeOfSqaure);
-                moveXAxis = new KeyValue(r1.xProperty(), 300 - sizeOfSqaure);
-                moveYAxis = new KeyValue(r1.yProperty(), 400 - sizeOfSqaure);
+                moveXAxis = new KeyValue(r1.xProperty(), 350 - sizeOfSqaure);
+                moveYAxis = new KeyValue(r1.yProperty(), 500 - sizeOfSqaure);
                 break;
             case 4:
                 // MOVE BOTTOM TO TOP
-                r1 = new Rectangle(startXPoint, 400 - sizeOfSqaure, sizeOfSqaure, sizeOfSqaure);
+                r1 = new Rectangle(startXPoint, 500 - sizeOfSqaure, sizeOfSqaure, sizeOfSqaure);
                 moveYAxis = new KeyValue(r1.xProperty(), 0);
                 break;
             case 5:
@@ -62,8 +66,8 @@ public class Animacion {
             case 6:
                 //MOVE RIGHT TO LEFT, BOTTOM TO TOP
                 r1 = new Rectangle(startXPoint, 0, sizeOfSqaure, sizeOfSqaure);
-                moveXAxis = new KeyValue(r1.xProperty(), 300 - sizeOfSqaure);
-                moveYAxis = new KeyValue(r1.yProperty(), 400 - sizeOfSqaure);
+                moveXAxis = new KeyValue(r1.xProperty(), 350 - sizeOfSqaure);
+                moveYAxis = new KeyValue(r1.yProperty(), 500 - sizeOfSqaure);
                 break;
 
             default:
@@ -83,9 +87,17 @@ public class Animacion {
     }
 
     public static void animaPanel(Pane pane) {
-        for (int i = 0; i < 70; i++) {
+        for (int i = 0; i < 100; i++) {
             generateAnimation(pane);
 
         }
+    }
+
+    public static void textoParpadeante(Text texto) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.6), texto);
+        fadeTransition.setFromValue(0.2);
+        fadeTransition.setToValue(1);
+        fadeTransition.setCycleCount(5);
+        fadeTransition.play();
     }
 }

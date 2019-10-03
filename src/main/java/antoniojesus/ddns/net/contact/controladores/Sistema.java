@@ -5,9 +5,12 @@
  */
 package antoniojesus.ddns.net.contact.controladores;
 
-import com.sun.org.apache.bcel.internal.generic.RET;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import com.sun.xml.internal.ws.api.ha.HaInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import javafx.application.HostServices;
 import javafx.stage.Stage;
 
 /**
@@ -15,13 +18,23 @@ import javafx.stage.Stage;
  * @author A. Jesús <Antonio Jesús Pérez Delgado ajpd1985@gmail.com>
  */
 public class Sistema {
+    
+    private static Set <Stage> mapaVentanas;
+    private static HostServices hostServices;
+   // public static final String V_LOGIN="V_LOGIN",V_CONTACTOS="V_CONTACTOS";
 
-    private static ObservableList<Stage> listaVentanas;
-
-    public static ObservableList<Stage> getVentanas() {
-        if (listaVentanas == null) {
-            listaVentanas = FXCollections.observableArrayList();
+    public static Set <Stage> getVentanas() {
+        if (mapaVentanas == null) {
+            mapaVentanas = new HashSet<Stage>();
         }
-        return listaVentanas;
+        return mapaVentanas;
+    }
+
+    public static HostServices getHostServices() {
+        return hostServices;
+    }
+
+    public static void setHostServices(HostServices hostServices) {
+        Sistema.hostServices = hostServices;
     }
 }
