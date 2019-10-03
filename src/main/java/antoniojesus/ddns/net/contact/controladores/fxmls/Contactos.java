@@ -3,12 +3,15 @@ package antoniojesus.ddns.net.contact.controladores.fxmls;
 import antoniojesus.ddns.net.contact.modelos.Contacto;
 import antoniojesus.ddns.net.contact.controladores.Util;
 import antoniojesus.ddns.net.contact.controladores.Consultas;
+import antoniojesus.ddns.net.contact.controladores.Sistema;
+import antoniojesus.ddns.net.contact.modelos.Persona;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -37,7 +40,7 @@ public class Contactos implements Initializable {
     FilteredList<Contacto> listraFiltrada;
     
     @FXML
-    private ComboBox<?> cbbBAmbito,cbbAmbito;
+    private ComboBox<String> cbbBAmbito,cbbAmbito;
     @FXML
     private TableColumn<Contacto, String> tbcolNombre, tbcolTelefono;
 
@@ -75,6 +78,13 @@ public class Contactos implements Initializable {
                 new PropertyValueFactory<Contacto, String>("nombre"));
         tbcolTelefono.setCellValueFactory(
                 new PropertyValueFactory<Contacto, String>("telefono"));
+        ObservableList<String> listaCombo=FXCollections.observableArrayList();
+        Persona p =Sistema.getUsuarioSistema();
+        listaCombo.addAll("general",p.getDepartamento());
+        cbbAmbito.setItems(listaCombo);
+        cbbAmbito.getSelectionModel().select(0);
+        cbbBAmbito.setItems(listaCombo);
+        cbbBAmbito.getSelectionModel().select(0);
 
        lista=Util.empezar(etiError,btnActualizar,btnBorrar,btnCrear);
 

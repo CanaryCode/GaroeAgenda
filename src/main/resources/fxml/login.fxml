@@ -85,10 +85,15 @@
             </AnchorPane>
             <AnchorPane>
                <children>
-                  <Hyperlink fx:id="hyperlinkEmail" text="A. Jesús, programador de la aplicación: ajpd1985@gmail.com" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="11.0" />
-                     </font></Hyperlink>
+                  <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <center>
+                        <Hyperlink fx:id="hyperlinkEmail" text="A. Jesús, programador de la aplicación: ajpd1985@gmail.com">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Hyperlink>
+                     </center>
+                  </BorderPane>
                </children>
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

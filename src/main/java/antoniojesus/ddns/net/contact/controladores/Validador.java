@@ -9,7 +9,7 @@ package antoniojesus.ddns.net.contact.controladores;
  *
  * @author A. Jesús <Antonio Jesús Pérez Delgado ajpd1985@gmail.com>
  */
-public class Validadores {
+public class Validador {
     static boolean esEmailValido (String email) {
    String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
    return email.matches(regex);

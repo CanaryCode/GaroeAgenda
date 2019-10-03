@@ -7,6 +7,7 @@ package antoniojesus.ddns.net.contact.controladores;
 
 import antoniojesus.ddns.net.contact.modelos.Contacto;
 import antoniojesus.ddns.net.contact.modelos.Persona;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,7 @@ import org.hibernate.Transaction;
  */
 public class Consultas {
 
+    @SuppressWarnings("unchecked")
     public static ObservableList<Contacto> getContactos() {
         ObservableList<Contacto> lista = FXCollections.observableArrayList();
         Session session = null;
@@ -28,7 +30,8 @@ public class Consultas {
         try {
             session = new Conexion().getSession();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("from Contacto");
+            SQLQuery query = session.createSQLQuery("select * from contacto where ambito like '" + Sistema.getUsuarioSistema().getDocumento()
+                    + "' or ambito like 'general'").addEntity(Contacto.class);
             lista.addAll(query.list());
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -99,15 +102,17 @@ public class Consultas {
             }
         }
     }
-   public static List<Persona> getUsuario(Persona persona){
-        List<Persona> lista=null;
+
+    @SuppressWarnings("unchecked")
+    public static Persona getUsuario(Persona persona) {
+        Persona p = null;
         Session session = null;
         Transaction transaction = null;
         try {
             session = new Conexion().getSession();
             transaction = session.beginTransaction();
-            SQLQuery query = session.createSQLQuery("SELECT * FROM contactos.persona where password like '"+persona.getPassword()+"' and usuario like '"+persona.getUsuario()+"'");
-            lista=(List<Persona>) query.list();
+            SQLQuery query = session.createSQLQuery("SELECT * FROM contactos.persona where password like '" + persona.getPassword() + "' and usuario like '" + persona.getUsuario() + "'").addEntity(Persona.class);
+            p = ((List<Persona>) query.list()).get(0);
             session.getTransaction().commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -118,6 +123,6 @@ public class Consultas {
                 session.close();
             }
         }
-        return lista;
-   }
+        return p;
+    }
 }

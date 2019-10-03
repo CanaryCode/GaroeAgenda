@@ -14,6 +14,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -21,16 +22,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="principal" prefHeight="650.0" prefWidth="900.0" stylesheets="@../estilos/estiloContactos.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="antoniojesus.ddns.net.contact.controladores.fxmls.Contactos">
+<AnchorPane id="AnchorPane" fx:id="principal" prefHeight="650.0" prefWidth="1000.0" stylesheets="@../estilos/estiloContactos.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="antoniojesus.ddns.net.contact.controladores.fxmls.Contactos">
    <children>
-      <SplitPane fx:id="panelDividido" dividerPositions="0.48981779206859594" layoutX="-79.0" layoutY="96.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane fx:id="panelDividido" dividerPositions="0.43987975951903807" layoutX="-79.0" layoutY="96.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane>
                <children>
                   <TableView fx:id="tabla" layoutX="-72.0" layoutY="-199.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="tbcolNombre" prefWidth="303.2000671029091" text="Nombre" />
-                      <TableColumn fx:id="tbcolTelefono" minWidth="0.0" prefWidth="151.199951171875" text="Teléfono" />
+                      <TableColumn fx:id="tbcolNombre" prefWidth="311.2000671029091" text="Nombre" />
+                      <TableColumn fx:id="tbcolTelefono" minWidth="0.0" prefWidth="123.199951171875" text="Teléfono" />
                     </columns>
                   </TableView>
                </children>
@@ -52,8 +53,8 @@
                               <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" prefWidth="200.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" />
-                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints vgrow="SOMETIMES" />
@@ -123,8 +124,8 @@
                            <children>
                               <GridPane maxWidth="0.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" prefWidth="200.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" prefWidth="100.0" />
                                  </columnConstraints>
                                  <rowConstraints>
                                     <RowConstraints vgrow="SOMETIMES" />
@@ -301,21 +302,33 @@
                                     <RowConstraints vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="btnCrear" mnemonicParsing="false" text="Crear">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar" GridPane.columnIndex="2">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar" GridPane.columnIndex="1">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Button>
+                                    <BorderPane>
+                                       <center>
+                                          <Button fx:id="btnCrear" mnemonicParsing="false" text="Crear">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane GridPane.columnIndex="2">
+                                       <center>
+                                          <Button fx:id="btnBorrar" mnemonicParsing="false" text="Borrar">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                       </center>
+                                    </BorderPane>
+                                    <BorderPane GridPane.columnIndex="1">
+                                       <center>
+                                          <Button fx:id="btnActualizar" mnemonicParsing="false" text="Actualizar">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                       </center>
+                                    </BorderPane>
                                  </children>
                               </GridPane>
                            </children>
