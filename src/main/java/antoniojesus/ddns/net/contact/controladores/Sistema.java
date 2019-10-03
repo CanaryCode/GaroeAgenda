@@ -6,6 +6,8 @@
 package antoniojesus.ddns.net.contact.controladores;
 
 
+import antoniojesus.ddns.net.contact.modelos.Persona;
+import com.mysql.cj.PerConnectionLRUFactory;
 import com.sun.xml.internal.ws.api.ha.HaInfo;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,7 +23,16 @@ public class Sistema {
     
     private static Set <Stage> mapaVentanas;
     private static HostServices hostServices;
+    private static Persona usuarioSistema;
    // public static final String V_LOGIN="V_LOGIN",V_CONTACTOS="V_CONTACTOS";
+
+    public static Persona getUsuarioSistema() {
+        return usuarioSistema;
+    }
+
+    public static void setUsuarioSistema(Persona usuarioSistema) {
+        Sistema.usuarioSistema = usuarioSistema;
+    }
 
     public static Set <Stage> getVentanas() {
         if (mapaVentanas == null) {

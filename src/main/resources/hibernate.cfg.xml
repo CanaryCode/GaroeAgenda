@@ -47,6 +47,7 @@ Contributor(s):
     <property name="hibernate.connection.password">1234</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <mapping resource="antoniojesus/ddns/net/contact/Contacto.hbm.xml"/>
+    <mapping resource="antoniojesus/ddns/net/contact/modelos/Contacto.hbm.xml"/>
+    <mapping resource="antoniojesus/ddns/net/contact/modelos/Persona.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="principal" prefHeight="500.0" prefWidth="350.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="antoniojesus.ddns.net.contact.controladores.fxmls.login">
+<AnchorPane id="AnchorPane" fx:id="principal" prefHeight="500.0" prefWidth="350.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="antoniojesus.ddns.net.contact.controladores.fxmls.Login">
     <stylesheets>
         <URL value="@/estilos/estiloContactos.css" />
     </stylesheets>

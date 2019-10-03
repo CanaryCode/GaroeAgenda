@@ -18,8 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -35,12 +35,14 @@ public class Contactos implements Initializable {
 
     String textoBuscador = "";
     FilteredList<Contacto> listraFiltrada;
-
+    
+    @FXML
+    private ComboBox<?> cbbBAmbito,cbbAmbito;
     @FXML
     private TableColumn<Contacto, String> tbcolNombre, tbcolTelefono;
 
     @FXML
-    private TextField tfBNombre, tfNombre, tfPrefijo, tfTelefono, tfEmail;
+    private TextField tfBNombre, tfNombre, tfPrefijo, tfTelefono, tfEmail,tfBTelefono;
 
     @FXML
     private ToggleGroup fijo;
@@ -56,7 +58,7 @@ public class Contactos implements Initializable {
     private RadioButton rdFax, rdFijo, rdMovil;
 
     @FXML
-    private Button btnCrear, btnActualizar, btnBorrar;
+    private Button btnCrear, btnActualizar, btnBorrar,btnBLimpiar,btnRefrescar;
     @FXML
     private TableView<Contacto> tabla;
  

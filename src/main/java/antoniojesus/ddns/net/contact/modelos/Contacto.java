@@ -1,5 +1,5 @@
 package antoniojesus.ddns.net.contact.modelos;
-// Generated 26 sept. 2019 11:51:31 by Hibernate Tools 4.3.1
+// Generated 03-oct-2019 3:57:40 by Hibernate Tools 4.3.1
 
 
 
@@ -16,6 +16,7 @@ public class Contacto  implements java.io.Serializable {
      private Boolean fax;
      private String comentario;
      private String email;
+     private String ambito;
 
     public Contacto() {
     }
@@ -24,7 +25,7 @@ public class Contacto  implements java.io.Serializable {
     public Contacto(String telefono) {
         this.telefono = telefono;
     }
-    public Contacto(String telefono, String nombre, Integer prefijo, Boolean fijo, Boolean fax, String comentario, String email) {
+    public Contacto(String telefono, String nombre, Integer prefijo, Boolean fijo, Boolean fax, String comentario, String email, String ambito) {
        this.telefono = telefono;
        this.nombre = nombre;
        this.prefijo = prefijo;
@@ -32,6 +33,7 @@ public class Contacto  implements java.io.Serializable {
        this.fax = fax;
        this.comentario = comentario;
        this.email = email;
+       this.ambito = ambito;
     }
    
     public String getTelefono() {
@@ -83,16 +85,16 @@ public class Contacto  implements java.io.Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
-   @Override
-    public boolean equals(Object obj) {
-        if(obj!=null){
-        return this.telefono.equals(((Contacto)obj).telefono);}
-        else{
-            return false;
-        }
+    public String getAmbito() {
+        return this.ambito;
     }
+    
+    public void setAmbito(String ambito) {
+        this.ambito = ambito;
+    }
+
+
+
 
 }
 
