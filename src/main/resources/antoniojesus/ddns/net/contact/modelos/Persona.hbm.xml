@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-oct-2019 6:53:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.iridiscente.contactosGaroe.modelos.Persona" table="persona" catalog="contactos" optimistic-lock="version">
+        <id name="idpersona" type="java.lang.Integer">
+            <column name="idpersona" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="esDni" type="java.lang.Byte">
+            <column name="esDni" />
+        </property>
+        <property name="esProveedor" type="byte">
+            <column name="esProveedor" not-null="true" />
+        </property>
+        <property name="esEmpresa" type="byte">
+            <column name="esEmpresa" not-null="true" />
+        </property>
+        <property name="esCliente" type="byte">
+            <column name="esCliente" not-null="true" />
+        </property>
+        <property name="esTrabajador" type="byte">
+            <column name="esTrabajador" not-null="true" />
+        </property>
+        <property name="esHombre" type="java.lang.Byte">
+            <column name="esHombre" />
+        </property>
+        <property name="documento" type="string">
+            <column name="documento" length="20" unique="true" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="primerApellido" length="50" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="segundoApellido" length="50" />
+        </property>
+        <property name="departamento" type="string">
+            <column name="departamento" length="50" />
+        </property>
+        <property name="categoria" type="string">
+            <column name="categoria" length="50" />
+        </property>
+        <property name="comentario" type="string">
+            <column name="comentario" length="500" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="paginaWeb" type="string">
+            <column name="paginaWeb" length="100" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="50" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="50" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="provincia" length="50" />
+        </property>
+        <property name="poblacion" type="string">
+            <column name="poblacion" length="50" />
+        </property>
+        <property name="calle" type="string">
+            <column name="calle" length="50" />
+        </property>
+        <property name="via" type="string">
+            <column name="via" length="50" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" length="10" />
+        </property>
+        <property name="escalera" type="string">
+            <column name="escalera" length="50" />
+        </property>
+        <property name="bloque" type="string">
+            <column name="bloque" length="50" />
+        </property>
+        <property name="codigoPostal" type="string">
+            <column name="codigoPostal" length="20" />
+        </property>
+        <property name="razonSocial" type="string">
+            <column name="razonSocial" length="20" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="50" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="usuario" length="50" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="100" />
+        </property>
+        <property name="empresa" type="string">
+            <column name="empresa" length="50" />
+        </property>
+        <set name="auditoriaContactos" table="auditoria_contacto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_persona" />
+            </key>
+            <one-to-many class="com.iridiscente.contactosGaroe.modelos.AuditoriaContacto" />
+        </set>
+    </class>
+</hibernate-mapping>
