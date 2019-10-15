@@ -128,12 +128,16 @@ public class Login implements Initializable {
                         try {
                             //SI EL PASSWORD ESTA CORRECTO-------------------------------------------------------------HAY USUARIO Y PASSWORD CORRECTO
                             if (Encriptacion.check(pfClave.getText(), p.getPassword())) {
+                                 Admitido macValida =null;
                                 List<Admitido> listaMac = (List<Admitido>) Consultas.listaAdmision();
                                 if (listaMac != null && !listaMac.isEmpty()) {
-                                    Admitido macValida = listaMac.stream().filter((t) -> {
+                                    List<Admitido> listaMacValidaFiltrada = listaMac.stream().filter((t) -> {
                                         return t.getMac().equals(Sistema.getMacAddress());
-
-                                    }).collect(Collectors.toList()).get(0);
+                                    }).collect(Collectors.toList());
+                                    
+                                    if(listaMacValidaFiltrada!=null&&!listaMacValidaFiltrada.isEmpty()){
+                                       macValida =listaMacValidaFiltrada.get(0);
+                                    }
                                     //SI EL USUARIO ESTA EN EL ORDENADOR ADECUADO--------------------------------------HAY USUARIO, PASSWORD Y UBICACION CORRECTA.
                                     if (macValida != null) {
                                         Sistema.setUsuarioSistema(p);
@@ -195,7 +199,6 @@ public class Login implements Initializable {
                                     List<Admitido> admitidos = new ArrayList<>();
                                     try {
                                         admitidos = (List<Admitido>) Encriptacion.AESObjectDedcoder("admision.dat");
-
                                         //SI LA MAC ESTA EN EL FICHERO DE ADMISION---------------------------------UBICACION DE ORDENADOR VALIDO EN LOCAL
                                         if (admitidos.stream().filter((t) -> {
                                             return t.getMac().equals(Sistema.getMacAddress());

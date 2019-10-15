@@ -31,9 +31,11 @@ public class HibernateUtil {
         sessionFactory = metadata.getSessionFactoryBuilder().build();
 
       } catch (Exception e) {
-        e.printStackTrace();
-        if (registry != null) {
-          StandardServiceRegistryBuilder.destroy(registry);
+        //e.printStackTrace();
+        if (registry != null) {try{
+          StandardServiceRegistryBuilder.destroy(registry);}catch(Exception exc){
+              
+          }
         }
       }
     }

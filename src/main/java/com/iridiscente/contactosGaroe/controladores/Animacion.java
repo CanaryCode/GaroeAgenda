@@ -21,7 +21,7 @@ import javafx.util.Duration;
  * @author A. Jesús <Antonio Jesús Pérez Delgado ajpd1985@gmail.com>
  */
 public class Animacion {
-
+    
     private static void generateAnimation(Pane principal) {
         Random rand = new Random();
         int sizeOfSqaure = rand.nextInt(50) + 1;
